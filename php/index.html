@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en" ng-app="prsApp">
 
 <head>
     <meta charset="utf-8">
@@ -88,9 +88,11 @@
             <div class="container">
                 <div class="col-6 col-sm-6 col-lg-4">
                     <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                    <p><a class="btn btn-default" href="#">View details &raquo;</a>
-                    </p>
+                    <button ng-click='change()'>Change Data</button>
+                  <div barchart class="chart" ng-model='data' style="height: 200px; width: 200px;" flt-Barchartoptions="{bars : {show : true, horizontal : false, shadowSize : 10, barWidth : 0.5},
+                                   mouse: {track : true, relative : true},
+                                   xaxis: {noTicks: 4, ticks: [[0, '2011-Q3'],[1, '2011-Q4'],[2, '2012-Q1']]},
+                                  yaxis : {min : 0, autoscaleMargin : 1}}"></div>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-4">
                     <h2>Heading</h2>
@@ -140,12 +142,14 @@
     <script src="app/vendorjslibs/json2.js"></script>
     <script src="app/vendorjslibs/jquery-1.10.2.min.js"></script>
     <script src="app/vendorjslibs/angular.min.js"></script>
+    <script src="app/vendorjslibs/flotr2.min.js"></script>
     <script src="app/js/app.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
-        $('[data-toggle=offcanvas]').click(function() {
+        $('[data-toggle=offcanvas]').click(function(ev) {
             $('.row-offcanvas').toggleClass('active');
             $('.main-content').toggleClass('aside');
+            ev.preventDefault();
         });
 
         $(document).on("orientationchange", function() {
