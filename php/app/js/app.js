@@ -51,10 +51,45 @@ function DashboardCtrl($scope, $route, $routeParams) {
                 [2, 4]
             ]
         ],
-        curr = 1;
+        curr = 1,
+        pieCurr = 1,
 
+
+        pieData1 = [{
+                data: [[0, 4]],
+                label: 'Comedy'
+            }, {
+                data: [[0, 3]],
+                label: 'Action'
+            }, {
+                data: [[0, 1.03]],
+                label: 'Romance'
+            }, {
+                data: [[0, 3.5]],
+                label: 'Sample'
+            }
+        ];
+
+         pieData2 = [{
+                data: [[0, 2]],
+                label: 'Comedy'
+            }, {
+                data: [[0, 6]],
+                label: 'Action'
+            }, {
+                data: [[0, 4.03]],
+                label: 'Romance'
+            }, {
+                data: [[0, 1.5]],
+                label: 'Sample'
+            }
+
+        ];
+
+
+      $scope.pieData = pieData1;
     $scope.data = data1;
-    
+
 
     $scope.change = function() {
         if (curr === 1) {
@@ -66,21 +101,30 @@ function DashboardCtrl($scope, $route, $routeParams) {
         }
     };
 
+$scope.changePieData = function() {
+        if (pieCurr === 1) {
+            $scope.pieData = pieData2;
+            pieCurr = 2;
+        } else {
+            $scope.pieData = pieData1;
+            pieCurr = 1;
+        }
+    };
+
 }
 
 angular.module('prsApp', [])
 // Register the 'myCurrentTime' directive factory method.
 // We inject $timeout and dateFilter service since the factory method is DI.
-.directive('barchart', function() {
+.directive('chart', function() {
     return {
         restrict: 'A',
         require: '?ngModel',
         link: function(scope, element, attr, controller) {
 
             var options = {};
-
             var getOptions = function() {
-                return angular.extend({}, options, scope.$eval(attr.fltBarchartoptions));
+                return angular.extend({}, options, scope.$eval(attr.fltChartoptions));
             };
 
             var init = function(v) {
@@ -100,7 +144,7 @@ angular.module('prsApp', [])
 
             var data = scope[attr.ngModel];
 
-            scope.$watch('data', init);
+            scope.$watch(attr.ngModel, init);
         }
     };
 });

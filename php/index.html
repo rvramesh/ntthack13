@@ -89,16 +89,32 @@
                 <div class="col-6 col-sm-6 col-lg-4">
                     <h2>Heading</h2>
                     <button ng-click='change()'>Change Data</button>
-                  <div barchart class="chart" ng-model='data' style="height: 200px; width: 200px;" flt-Barchartoptions="{bars : {show : true, horizontal : false, shadowSize : 10, barWidth : 0.5},
+                    <div id="test1" chart class="chart" ng-model='data' style="height: 200px; width: 200px;" flt-Chartoptions="{bars : {show : true, horizontal : false, shadowSize : 10, barWidth : 0.5},
                                    mouse: {track : true, relative : true},
                                    xaxis: {noTicks: 4, ticks: [[0, '2011-Q3'],[1, '2011-Q4'],[2, '2012-Q1']]},
                                   yaxis : {min : 0, autoscaleMargin : 1}}"></div>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-4">
                     <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.</p>
-                    <p><a class="btn btn-default" href="#">View details &raquo;</a>
-                    </p>
+                    <button ng-click='changePieData()'>Change Data</button>
+                    <div id="test2" chart class="chart" ng-model='pieData' style="height: 200px; width: 200px;" flt-Chartoptions="{
+                        HtmlText : false,
+                        grid : {
+                          verticalLines : false,
+                          horizontalLines : false
+                        },
+                        xaxis : { showLabels : false },
+                        yaxis : { showLabels : false },
+                        pie : {
+                          show : true, 
+                          explode : 6
+                        },
+                        mouse : { track : true },
+                        legend : {
+                          position : 'se',
+                          backgroundColor : '#D2E8FF'
+                        }
+                      }"></div>
                 </div>
                 <div class="col-6 col-sm-6 col-lg-4">
                     <h2>Heading</h2>
